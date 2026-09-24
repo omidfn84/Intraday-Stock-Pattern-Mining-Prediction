@@ -1,0 +1,61 @@
+ticker,company,sector,expected_exchange,size_hint
+AAPL,Apple Inc.,Information Technology,Nasdaq,Mega
+MSFT,Microsoft Corporation,Information Technology,Nasdaq,Mega
+NVDA,NVIDIA Corporation,Information Technology,Nasdaq,Mega
+ORCL,Oracle Corporation,Information Technology,NYSE,Large
+CSCO,Cisco Systems Inc.,Information Technology,Nasdaq,Large
+AKAM,Akamai Technologies Inc.,Information Technology,Nasdaq,Mid
+GOOGL,Alphabet Inc. (Class A),Communication Services,Nasdaq,Mega
+META,Meta Platforms Inc.,Communication Services,Nasdaq,Mega
+VZ,Verizon Communications Inc.,Communication Services,NYSE,Large
+DIS,The Walt Disney Company,Communication Services,NYSE,Large
+NYT,The New York Times Company,Communication Services,NYSE,Mid
+AMZN,Amazon.com Inc.,Consumer Discretionary,Nasdaq,Mega
+HD,The Home Depot Inc.,Consumer Discretionary,NYSE,Large
+MCD,McDonald's Corporation,Consumer Discretionary,NYSE,Large
+NKE,Nike Inc.,Consumer Discretionary,NYSE,Large
+SBUX,Starbucks Corporation,Consumer Discretionary,Nasdaq,Large
+HAS,Hasbro Inc.,Consumer Discretionary,Nasdaq,Mid
+PG,The Procter & Gamble Company,Consumer Staples,NYSE,Large
+KO,The Coca-Cola Company,Consumer Staples,NYSE,Large
+PEP,PepsiCo Inc.,Consumer Staples,Nasdaq,Large
+COST,Costco Wholesale Corporation,Consumer Staples,Nasdaq,Large
+CLX,The Clorox Company,Consumer Staples,NYSE,Mid
+JNJ,Johnson & Johnson,Health Care,NYSE,Large
+UNH,UnitedHealth Group Inc.,Health Care,NYSE,Large
+LLY,Eli Lilly and Company,Health Care,NYSE,Mega
+MRK,Merck & Co. Inc.,Health Care,NYSE,Large
+GILD,Gilead Sciences Inc.,Health Care,Nasdaq,Large
+INCY,Incyte Corporation,Health Care,Nasdaq,Mid
+JPM,JPMorgan Chase & Co.,Financials,NYSE,Mega
+BAC,Bank of America Corporation,Financials,NYSE,Large
+V,Visa Inc. (Class A),Financials,NYSE,Mega
+GS,The Goldman Sachs Group Inc.,Financials,NYSE,Large
+PYPL,PayPal Holdings Inc.,Financials,Nasdaq,Large
+TROW,T. Rowe Price Group Inc.,Financials,Nasdaq,Mid
+CAT,Caterpillar Inc.,Industrials,NYSE,Large
+GE,GE Aerospace,Industrials,NYSE,Large
+UPS,United Parcel Service Inc.,Industrials,NYSE,Large
+DE,Deere & Company,Industrials,NYSE,Large
+PCAR,PACCAR Inc.,Industrials,Nasdaq,Large
+JBHT,J.B. Hunt Transport Services Inc.,Industrials,Nasdaq,Mid
+XOM,Exxon Mobil Corporation,Energy,NYSE,Mega
+CVX,Chevron Corporation,Energy,NYSE,Large
+COP,ConocoPhillips,Energy,NYSE,Large
+SLB,SLB (Schlumberger),Energy,NYSE,Large
+APA,APA Corporation,Energy,Nasdaq,Mid
+NEE,NextEra Energy Inc.,Utilities,NYSE,Large
+DUK,Duke Energy Corporation,Utilities,NYSE,Large
+SO,The Southern Company,Utilities,NYSE,Large
+AEP,American Electric Power Company Inc.,Utilities,Nasdaq,Large
+PNW,Pinnacle West Capital Corporation,Utilities,NYSE,Mid
+PLD,Prologis Inc.,Real Estate,NYSE,Large
+AMT,American Tower Corporation,Real Estate,NYSE,Large
+O,Realty Income Corporation,Real Estate,NYSE,Large
+EQIX,Equinix Inc.,Real Estate,Nasdaq,Large
+REG,Regency Centers Corporation,Real Estate,Nasdaq,Mid
+LIN,Linde plc,Materials,Nasdaq,Large
+NEM,Newmont Corporation,Materials,NYSE,Large
+FCX,Freeport-McMoRan Inc.,Materials,NYSE,Large
+SHW,The Sherwin-Williams Company,Materials,NYSE,Large
+MOS,The Mosaic Company,Materials,NYSE,Mid
