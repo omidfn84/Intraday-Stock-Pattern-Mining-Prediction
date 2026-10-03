@@ -78,5 +78,14 @@
     "09:30",
     "16:00"
   ],
-  "coverage_threshold": 0.95
+  "coverage_threshold": 0.95,
+  "volatility_cutoffs": [
+    0.010121135659095459,
+    0.013165860565478218
+  ],
+  "liquidity_cutoffs": [
+    2298919.133333333,
+    6147448.6
+  ],
+  "quantile_method": "pandas default (linear interpolation)"
 }
