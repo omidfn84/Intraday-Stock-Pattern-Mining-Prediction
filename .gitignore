@@ -3,3 +3,5 @@
 .DS_Store
 __pycache__/
 .ipynb_checkpoints
+# Phase 3 history is large and can be re-downloaded with src/download_expanded.py
+data/raw_v2/history/
