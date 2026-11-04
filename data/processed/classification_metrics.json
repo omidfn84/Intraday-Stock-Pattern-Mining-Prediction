@@ -1,0 +1,191 @@
+{
+  "rows": {
+    "train": 1534,
+    "validation": 413,
+    "test": 649
+  },
+  "test_class_counts": {
+    "Low": 200,
+    "Medium": 167,
+    "High": 282
+  },
+  "baselines": {
+    "majority": {
+      "accuracy": 0.4345146379044684,
+      "macro_precision": 0.1448382126348228,
+      "macro_recall": 0.3333333333333333,
+      "macro_f1": 0.20193340494092374,
+      "per_class": {
+        "Low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 200.0
+        },
+        "Medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 167.0
+        },
+        "High": {
+          "precision": 0.4345146379044684,
+          "recall": 1.0,
+          "f1-score": 0.6058002148227712,
+          "support": 282.0
+        }
+      },
+      "predicts": "High"
+    },
+    "persistence": {
+      "accuracy": 0.5870570107858244,
+      "macro_precision": 0.5581694623191621,
+      "macro_recall": 0.5573303747115698,
+      "macro_f1": 0.557709410960729,
+      "per_class": {
+        "Low": {
+          "precision": 0.6377551020408163,
+          "recall": 0.625,
+          "f1-score": 0.6313131313131313,
+          "support": 200.0
+        },
+        "Medium": {
+          "precision": 0.3433734939759036,
+          "recall": 0.3413173652694611,
+          "f1-score": 0.34234234234234234,
+          "support": 167.0
+        },
+        "High": {
+          "precision": 0.6933797909407665,
+          "recall": 0.7056737588652482,
+          "f1-score": 0.6994727592267135,
+          "support": 282.0
+        }
+      }
+    }
+  },
+  "tree_settings": {
+    "criterion": "entropy",
+    "max_depth": 4,
+    "min_samples_leaf": 30,
+    "validation_macro_f1": 0.5868946284015224,
+    "leaves_after_refit": 16
+  },
+  "tree_feature_importance": {
+    "realized_volatility": 0.8982,
+    "rel_volume": 0.0591,
+    "log_volume": 0.0263,
+    "liquidity_rank": 0.0094,
+    "return_pct": 0.007,
+    "range_pct": 0.0
+  },
+  "nb_validation_macro_f1": 0.48842517152616916,
+  "decision_tree": {
+    "accuracy": 0.5808936825885979,
+    "macro_precision": 0.570882799180392,
+    "macro_recall": 0.5656070837049305,
+    "macro_f1": 0.565134961253886,
+    "per_class": {
+      "Low": {
+        "precision": 0.6161137440758294,
+        "recall": 0.65,
+        "f1-score": 0.6326034063260341,
+        "support": 200.0
+      },
+      "Medium": {
+        "precision": 0.3465346534653465,
+        "recall": 0.41916167664670656,
+        "f1-score": 0.3794037940379404,
+        "support": 167.0
+      },
+      "High": {
+        "precision": 0.75,
+        "recall": 0.6276595744680851,
+        "f1-score": 0.6833976833976834,
+        "support": 282.0
+      }
+    },
+    "accuracy_by_liquidity_tier": {
+      "High": 0.5636363636363636,
+      "Low": 0.6136363636363636,
+      "Medium": 0.5645933014354066
+    },
+    "confusion_matrix": [
+      [
+        130,
+        52,
+        18
+      ],
+      [
+        56,
+        70,
+        41
+      ],
+      [
+        25,
+        80,
+        177
+      ]
+    ],
+    "auc": {
+      "Low": 0.8163307349665925,
+      "Medium": 0.6183442244142421,
+      "High": 0.8263184339188745
+    },
+    "macro_auc": 0.7536644644332364
+  },
+  "naive_bayes": {
+    "accuracy": 0.5208012326656395,
+    "macro_precision": 0.5182249851082564,
+    "macro_recall": 0.5157297461813961,
+    "macro_f1": 0.506867806028238,
+    "per_class": {
+      "Low": {
+        "precision": 0.54296875,
+        "recall": 0.695,
+        "f1-score": 0.6096491228070176,
+        "support": 200.0
+      },
+      "Medium": {
+        "precision": 0.30612244897959184,
+        "recall": 0.3592814371257485,
+        "f1-score": 0.3305785123966942,
+        "support": 167.0
+      },
+      "High": {
+        "precision": 0.7055837563451777,
+        "recall": 0.4929078014184397,
+        "f1-score": 0.5803757828810021,
+        "support": 282.0
+      }
+    },
+    "accuracy_by_liquidity_tier": {
+      "High": 0.5272727272727272,
+      "Low": 0.5727272727272728,
+      "Medium": 0.45933014354066987
+    },
+    "confusion_matrix": [
+      [
+        139,
+        38,
+        23
+      ],
+      [
+        72,
+        60,
+        35
+      ],
+      [
+        45,
+        98,
+        139
+      ]
+    ],
+    "auc": {
+      "Low": 0.7816146993318485,
+      "Medium": 0.6031505453822645,
+      "High": 0.7655661197750594
+    },
+    "macro_auc": 0.7167771214963908
+  }
+}

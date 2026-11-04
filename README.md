@@ -43,10 +43,11 @@ skip anything already downloaded.
 | 1 | `python src/01_download_prices.py` | `data/raw/prices/` raw Alpaca bars (Parquet) + `manifest.json` |
 | 2 | `python src/02_download_company_info.py` | `data/raw/sec/` SEC snapshot, `data/processed/stock_metadata.csv` |
 | 3 | `python src/03_build_tables.py` | all tables in `data/processed/`, coverage reports, `build_summary.json` |
-| 4 | `python src/04_export_workbook.py` | `221953930-219431865.xlsx` (run last: it also collects result tables) |
-| 5 | `python src/05_figures.py` | `figures/` |
+| 4 | `python src/04_export_workbook.py` | `221953930-219431865.xlsx` (rerun last: it also collects result tables) |
+| 5 | `python src/05_figures.py` | `figures/fig1`, `fig2` |
+| 6 | `python src/06_classification.py` | decision tree + Naive Bayes vs. baselines: `classification_results.csv`, `classification_metrics.json`, `figures/fig3`-`fig5` |
 
-Steps 06-08 (PCA, classification, clustering) are being added next.
+PCA and clustering steps are being added next.
 
 ## Folder layout
 

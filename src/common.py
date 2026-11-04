@@ -170,7 +170,9 @@ def write_workbook(path, sheets):
     Excel cannot store time zones, so timezone-aware columns are written as UTC
     without the zone tag (the column names say UTC).
     """
-    with pd.ExcelWriter(path, engine="openpyxl") as writer:
+    path = Path(path)
+    tmp = path.with_name(path.stem + ".tmp.xlsx")       # write here first, swap in at the end
+    with pd.ExcelWriter(tmp, engine="openpyxl") as writer:
         for name, df in sheets.items():
             df = df.copy()
             for col in df.columns:
@@ -180,3 +182,8 @@ def write_workbook(path, sheets):
         for sheet in writer.sheets.values():
             for col in sheet.columns:
                 sheet.column_dimensions[col[0].column_letter].width = 20
+    try:
+        os.replace(tmp, path)                            # never leaves a half-written workbook
+    except OSError as e:
+        raise SystemExit(f"Could not replace {path.name} ({e}). Close it in Excel and run again; "
+                         f"the new version is saved as {tmp.name}.")
