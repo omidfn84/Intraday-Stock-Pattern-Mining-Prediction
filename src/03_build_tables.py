@@ -6,7 +6,8 @@
   3. Cutoffs    volatility and liquidity tiers from the 5 calibration days only,
                 frozen in config.json (no information from the analysis days)
   4. Tables     Stock_Profile, Stock_Day, Intraday_Bars
-  5. Modelling  today's features -> tomorrow's volatility tier, split by date
+  5. Modelling  today's features (+ recent-history features) -> tomorrow's
+                volatility tier, split by date
 
 Outputs in data/processed/ (every check is also saved in build_summary.json):
   stock_profile.csv, stock_day.csv, intraday_bars.parquet, classification_data.csv,
@@ -20,8 +21,12 @@ import pandas as pd
 from common import (DATA, PROCESSED, RAW_PRICES, clean_bars, coverage_report, load_config,
                     min_bars, save_config, stock_day, stock_profile, tercile_cutoffs, to_tier)
 
-FEATURES = ["realized_volatility", "range_pct", "return_pct", "log_volume",
-            "rel_volume", "liquidity_rank"]
+# Version 1 features: what happened today.
+TODAY_FEATURES = ["realized_volatility", "range_pct", "return_pct", "log_volume",
+                  "rel_volume", "liquidity_rank"]
+# Version 2 adds recent history (added after version 1 only tied the persistence baseline).
+HISTORY_FEATURES = ["vol_5d", "vol_change", "market_vol", "market_vol_5d"]
+FEATURES = TODAY_FEATURES + HISTORY_FEATURES
 PROFILE_COLUMNS = ["ticker", "cik", "company_name", "exchange", "snapshot_date",
                    "calibration_end_date", "mean_daily_volume", "mean_close_usd",
                    "valid_calibration_days", "liquidity_tier"]
@@ -82,6 +87,17 @@ def modelling_table(day, profile):
     split = {d: "train" if i < n_train else "validation" if i < n_train + n_val else "test"
              for i, d in enumerate(feature_days)}
 
+    # Recent-history features, computed on every study day (the 5 calibration days come
+    # first, so even the first main day has a full 5-day window). Each uses only today
+    # and earlier days, never tomorrow.
+    day = day.sort_values(["ticker", "session_date"]).copy()
+    vol = day.groupby("ticker")["realized_volatility"]
+    day["vol_5d"] = vol.transform(lambda s: s.rolling(5, min_periods=5).mean())  # 5-day average
+    day["vol_change"] = day["realized_volatility"] / vol.shift(1)                # today / yesterday
+    day["market_vol"] = day.groupby("session_date")["realized_volatility"].transform("mean")
+    day["market_vol_5d"] = day.groupby("ticker")["market_vol"].transform(
+        lambda s: s.rolling(5, min_periods=5).mean())                            # market, 5-day
+
     d = day[day["session_date"].isin(main_days)].sort_values(["ticker", "session_date"]).copy()
     tomorrow = d.groupby("ticker")[["session_date", "volatility_tier", "coverage_ok"]].shift(-1)
     d["label_date"] = tomorrow["session_date"]
@@ -98,7 +114,8 @@ def modelling_table(day, profile):
     d["split"] = d["session_date"].map(split)
 
     n_all = len(d)
-    usable = d["coverage_ok"] & d["label_coverage_ok"].astype(bool) & d["realized_volatility"].notna()
+    usable = (d["coverage_ok"] & d["label_coverage_ok"].astype(bool)
+              & d[["realized_volatility"] + HISTORY_FEATURES].notna().all(axis=1))
     d = d[usable].rename(columns={"session_date": "feature_date"})
     d = d[["ticker", "feature_date", "label_date"] + FEATURES +
           ["next_volatility_tier", "split"]].reset_index(drop=True)

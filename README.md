@@ -16,7 +16,7 @@ next-day volatility, always testing on later days than the models are trained on
 
 Tables: **Stock_Profile** (one row per stock), **Stock_Day** (one row per stock per day),
 **Intraday_Bars** (one row per stock per 5 minutes), and **Classification_Data** (today's
-features with tomorrow's volatility tier).
+features plus recent-history features, with tomorrow's volatility tier).
 
 ## Setup
 
@@ -45,7 +45,7 @@ skip anything already downloaded.
 | 3 | `python src/03_build_tables.py` | all tables in `data/processed/`, coverage reports, `build_summary.json` |
 | 4 | `python src/04_export_workbook.py` | `221953930-219431865.xlsx` (rerun last: it also collects result tables) |
 | 5 | `python src/05_figures.py` | `figures/fig1`, `fig2` |
-| 6 | `python src/06_classification.py` | decision tree + Naive Bayes vs. baselines: `classification_results.csv`, `classification_metrics.json`, `figures/fig3`-`fig5` |
+| 6 | `python src/06_classification.py` | decision tree + Naive Bayes, feature versions v1 and v2, vs. three baselines: `classification_results.csv`, `classification_metrics.json`, `figures/fig3`-`fig5` |
 
 PCA and clustering steps are being added next.
 
@@ -77,3 +77,9 @@ archive/           Phase 1 as submitted and the first 25-day download (see archi
 - **Split-adjusted prices**, so a stock split never shows up as a fake price jump.
 - **Data revisions are tracked.** Comparing with the first download (Sep 24) shows identical
   prices; only Sept 15 volume was revised upward by at most 0.6% (late-reported trades).
+- **Two feature versions for classification.** v1 used only today's features and tied the
+  persistence baseline ("tomorrow = today"); its tree relied ~90% on today's volatility. Since
+  one day's volatility is a noisy reading, v2 adds recent history (5-day average volatility,
+  today/yesterday change, market-wide volatility today and over 5 days). v2 was justified on the
+  validation days first (tree macro F1 0.587 -> 0.610) and then scored on the test days. Both
+  versions are kept and reported, along with a third baseline: the tier of the 5-day average.

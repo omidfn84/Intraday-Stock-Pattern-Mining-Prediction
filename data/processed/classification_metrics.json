@@ -9,6 +9,36 @@
     "Medium": 167,
     "High": 282
   },
+  "validation": {
+    "majority": {
+      "accuracy": 0.3922518159806295,
+      "macro_f1": 0.18782608695652173
+    },
+    "persistence": {
+      "accuracy": 0.5569007263922519,
+      "macro_f1": 0.5479511682317092
+    },
+    "five_day_average": {
+      "accuracy": 0.6053268765133172,
+      "macro_f1": 0.593431323198765
+    },
+    "decision_tree_v1": {
+      "accuracy": 0.5907990314769975,
+      "macro_f1": 0.5868946284015224
+    },
+    "naive_bayes_v1": {
+      "accuracy": 0.4939467312348668,
+      "macro_f1": 0.48842517152616916
+    },
+    "decision_tree_v2": {
+      "accuracy": 0.6222760290556901,
+      "macro_f1": 0.609934594538253
+    },
+    "naive_bayes_v2": {
+      "accuracy": 0.5472154963680388,
+      "macro_f1": 0.5479051904787061
+    }
+  },
   "baselines": {
     "majority": {
       "accuracy": 0.4345146379044684,
@@ -62,16 +92,49 @@
           "support": 282.0
         }
       }
+    },
+    "five_day_average": {
+      "accuracy": 0.637904468412943,
+      "macro_precision": 0.6242826359863849,
+      "macro_recall": 0.6106596735606801,
+      "macro_f1": 0.6152377729842519,
+      "per_class": {
+        "Low": {
+          "precision": 0.7411764705882353,
+          "recall": 0.63,
+          "f1-score": 0.6810810810810811,
+          "support": 200.0
+        },
+        "Medium": {
+          "precision": 0.38341968911917096,
+          "recall": 0.4431137724550898,
+          "f1-score": 0.4111111111111111,
+          "support": 167.0
+        },
+        "High": {
+          "precision": 0.7482517482517482,
+          "recall": 0.7588652482269503,
+          "f1-score": 0.7535211267605634,
+          "support": 282.0
+        }
+      }
     }
   },
-  "tree_settings": {
+  "tree_settings_v1": {
+    "features": [
+      "realized_volatility",
+      "range_pct",
+      "return_pct",
+      "log_volume",
+      "rel_volume",
+      "liquidity_rank"
+    ],
     "criterion": "entropy",
     "max_depth": 4,
     "min_samples_leaf": 30,
-    "validation_macro_f1": 0.5868946284015224,
     "leaves_after_refit": 16
   },
-  "tree_feature_importance": {
+  "tree_feature_importance_v1": {
     "realized_volatility": 0.8982,
     "rel_volume": 0.0591,
     "log_volume": 0.0263,
@@ -79,8 +142,37 @@
     "return_pct": 0.007,
     "range_pct": 0.0
   },
-  "nb_validation_macro_f1": 0.48842517152616916,
-  "decision_tree": {
+  "tree_settings_v2": {
+    "features": [
+      "realized_volatility",
+      "range_pct",
+      "return_pct",
+      "log_volume",
+      "rel_volume",
+      "liquidity_rank",
+      "vol_5d",
+      "vol_change",
+      "market_vol",
+      "market_vol_5d"
+    ],
+    "criterion": "entropy",
+    "max_depth": 4,
+    "min_samples_leaf": 10,
+    "leaves_after_refit": 16
+  },
+  "tree_feature_importance_v2": {
+    "vol_5d": 0.8764,
+    "realized_volatility": 0.0369,
+    "range_pct": 0.0261,
+    "log_volume": 0.0211,
+    "market_vol_5d": 0.0189,
+    "return_pct": 0.0117,
+    "market_vol": 0.0089,
+    "rel_volume": 0.0,
+    "liquidity_rank": 0.0,
+    "vol_change": 0.0
+  },
+  "decision_tree_v1": {
     "accuracy": 0.5808936825885979,
     "macro_precision": 0.570882799180392,
     "macro_recall": 0.5656070837049305,
@@ -134,7 +226,7 @@
     },
     "macro_auc": 0.7536644644332364
   },
-  "naive_bayes": {
+  "naive_bayes_v1": {
     "accuracy": 0.5208012326656395,
     "macro_precision": 0.5182249851082564,
     "macro_recall": 0.5157297461813961,
@@ -187,5 +279,113 @@
       "High": 0.7655661197750594
     },
     "macro_auc": 0.7167771214963908
+  },
+  "decision_tree_v2": {
+    "accuracy": 0.6163328197226502,
+    "macro_precision": 0.5914826294216194,
+    "macro_recall": 0.5990378109030167,
+    "macro_f1": 0.5904831648841665,
+    "per_class": {
+      "Low": {
+        "precision": 0.6345381526104418,
+        "recall": 0.79,
+        "f1-score": 0.7037861915367484,
+        "support": 200.0
+      },
+      "Medium": {
+        "precision": 0.3696969696969697,
+        "recall": 0.3652694610778443,
+        "f1-score": 0.3674698795180723,
+        "support": 167.0
+      },
+      "High": {
+        "precision": 0.7702127659574468,
+        "recall": 0.6418439716312057,
+        "f1-score": 0.7001934235976789,
+        "support": 282.0
+      }
+    },
+    "accuracy_by_liquidity_tier": {
+      "High": 0.5727272727272728,
+      "Low": 0.6681818181818182,
+      "Medium": 0.6076555023923444
+    },
+    "confusion_matrix": [
+      [
+        158,
+        32,
+        10
+      ],
+      [
+        62,
+        61,
+        44
+      ],
+      [
+        29,
+        72,
+        181
+      ]
+    ],
+    "auc": {
+      "Low": 0.8528841870824053,
+      "Medium": 0.6326123686237484,
+      "High": 0.855378089551085
+    },
+    "macro_auc": 0.7802915484190796
+  },
+  "naive_bayes_v2": {
+    "accuracy": 0.5701078582434514,
+    "macro_precision": 0.573813262383507,
+    "macro_recall": 0.5703001797822794,
+    "macro_f1": 0.5628866577121524,
+    "per_class": {
+      "Low": {
+        "precision": 0.6387665198237885,
+        "recall": 0.725,
+        "f1-score": 0.6791569086651054,
+        "support": 200.0
+      },
+      "Medium": {
+        "precision": 0.35,
+        "recall": 0.46107784431137727,
+        "f1-score": 0.3979328165374677,
+        "support": 167.0
+      },
+      "High": {
+        "precision": 0.7326732673267327,
+        "recall": 0.524822695035461,
+        "f1-score": 0.6115702479338843,
+        "support": 282.0
+      }
+    },
+    "accuracy_by_liquidity_tier": {
+      "High": 0.5909090909090909,
+      "Low": 0.6318181818181818,
+      "Medium": 0.48325358851674644
+    },
+    "confusion_matrix": [
+      [
+        145,
+        36,
+        19
+      ],
+      [
+        55,
+        77,
+        35
+      ],
+      [
+        27,
+        107,
+        148
+      ]
+    ],
+    "auc": {
+      "Low": 0.8314142538975502,
+      "Medium": 0.6369418838671205,
+      "High": 0.8031576709760951
+    },
+    "macro_auc": 0.7571712695802554
   }
 }
