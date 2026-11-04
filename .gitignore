@@ -3,5 +3,7 @@
 .DS_Store
 __pycache__/
 .ipynb_checkpoints
-# Phase 3 history is large and can be re-downloaded with src/download_expanded.py
-data/raw_v2/history/
+# The extra year of history is large (60+ MB raw) and can be rebuilt:
+#   python src/01_download_prices.py  then  python src/03_build_tables.py
+data/raw/prices/history/
+data/processed/history_bars.parquet

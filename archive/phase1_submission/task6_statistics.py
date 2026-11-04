@@ -1,3 +1,13 @@
+"""Phase 1, step 5 (Diego): Task 6 statistics sheets.
+
+Reads 221953930-219431865.xlsx and writes 221953930-219431865_with_stats.xlsx
+with Stat_Nominal, Stat_Ordinal, Stat_Interval and Stat_Ratio (Excel formulas).
+Kept here with the Phase 1 workbook it reads; only the two lines below were
+added so it runs from any folder.
+"""
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 from pathlib import Path
 from datetime import datetime
 

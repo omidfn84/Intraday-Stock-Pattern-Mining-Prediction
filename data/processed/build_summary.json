@@ -1,0 +1,104 @@
+{
+  "study": {
+    "days": 50,
+    "raw_rows": 354099,
+    "clean_rows": 230076,
+    "max_possible": 230100,
+    "coverage_pct": 99.99,
+    "checks": {
+      "duplicates": 0,
+      "non_positive_prices": 0,
+      "open_close_outside_range": 0,
+      "negative_volume": 0
+    },
+    "bad_stock_days": 0,
+    "stocks_over_5pct_bad": []
+  },
+  "first_download_check": {
+    "matched_bars": 115033,
+    "first_download_bars": 115033,
+    "tickers_with_split_like_price_changes": [],
+    "bars_with_revised_volume": 1898,
+    "revised_volume_by_day": [
+      {
+        "day": "2026-09-15",
+        "bars": 1898,
+        "stocks": 59,
+        "extra_volume": 648603.0
+      }
+    ]
+  },
+  "cutoffs": {
+    "volatility_cutoffs": [
+      0.010121135659095459,
+      0.013165860565478218
+    ],
+    "liquidity_cutoffs": [
+      2298919.133333333,
+      6147448.6
+    ]
+  },
+  "modelling": {
+    "rows": 2596,
+    "dropped_for_coverage": 0,
+    "split_counts": {
+      "train": {
+        "Low": 521,
+        "Medium": 475,
+        "High": 538,
+        "rows": 1534
+      },
+      "validation": {
+        "Low": 128,
+        "Medium": 123,
+        "High": 162,
+        "rows": 413
+      },
+      "test": {
+        "Low": 200,
+        "Medium": 167,
+        "High": 282,
+        "rows": 649
+      }
+    },
+    "split_dates": {
+      "test": {
+        "min": "2026-10-08",
+        "max": "2026-10-22",
+        "nunique": 11
+      },
+      "train": {
+        "min": "2026-08-21",
+        "max": "2026-09-28",
+        "nunique": 26
+      },
+      "validation": {
+        "min": "2026-09-29",
+        "max": "2026-10-07",
+        "nunique": 7
+      }
+    }
+  },
+  "tables": {
+    "stock_profile": 59,
+    "stock_day_main": 2655,
+    "intraday_bars_main": 207069
+  },
+  "history": {
+    "days": 258,
+    "raw_rows": 1789064,
+    "clean_rows": 1186941,
+    "max_possible": 1187316,
+    "coverage_pct": 99.968,
+    "checks": {
+      "duplicates": 0,
+      "non_positive_prices": 0,
+      "open_close_outside_range": 0,
+      "negative_volume": 0
+    },
+    "bad_stock_days": 36,
+    "stocks_over_5pct_bad": [
+      "EQIX"
+    ]
+  }
+}

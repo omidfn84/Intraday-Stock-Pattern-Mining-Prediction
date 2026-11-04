@@ -65,6 +65,7 @@
   },
   "feed": "sip",
   "timeframe": "5Min",
+  "adjustment": "split",
   "calibration_days": [
     "2026-08-14",
     "2026-08-17",
@@ -73,7 +74,9 @@
     "2026-08-20"
   ],
   "main_start": "2026-08-21",
-  "main_end": "2026-09-18",
+  "main_end": "2026-10-23",
+  "history_start": "2025-08-01",
+  "history_end": "2026-08-13",
   "regular_hours_ny": [
     "09:30",
     "16:00"
@@ -87,5 +90,11 @@
     2298919.133333333,
     6147448.6
   ],
-  "quantile_method": "pandas default (linear interpolation)"
+  "quantile_method": "pandas default (linear interpolation)",
+  "split": {
+    "train_days": 26,
+    "validation_days": 7,
+    "test_days": 11,
+    "note": "by date over the 44 feature days; never shuffled"
+  }
 }
