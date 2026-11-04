@@ -163,7 +163,9 @@ def main():
     ax.set_title(f"Decision tree ({metrics['tree_settings']['criterion']}, max depth "
                  f"{metrics['tree_settings']['max_depth']}, {tree.get_n_leaves()} leaves). "
                  f"value = number of training days per tier, in the order {list(tree.classes_)}; "
-                 f"class = the tier the node predicts", fontsize=14)
+                 f"class = the tier the node predicts.\nAt every split, the LEFT branch means the "
+                 f"condition is true (value <= threshold) and the RIGHT branch means it is false.",
+                 fontsize=14)
     fig.savefig(FIGURES / "fig3_decision_tree.png", dpi=200, bbox_inches="tight")
 
     results.to_csv(PROCESSED / "classification_results.csv", index=False)
